@@ -2,9 +2,9 @@ import React from 'react';
 
 const App = (props) => {
   return (
-          <div className='app'>
-            {props.children}
-          </div>
+    <div className='app'>
+      {props.children}
+    </div>
   )
 };
 
