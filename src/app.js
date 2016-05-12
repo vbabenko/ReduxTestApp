@@ -7,13 +7,16 @@ import {syncHistoryWithStore, routerReducer} from 'react-router-redux';
 import * as reducers from './reducers.js';
 reducers.routing = routerReducer;
 
+import * as localStore from './localStore.js';
 import App from './components/App.js';
 import VisibleCard from './components/VisibleCard.js';
 
-const store = createStore(combineReducers(reducers));
+const store = createStore(combineReducers(reducers), localStore.get()); // state saved to local storage
 const history = syncHistoryWithStore(browserHistory, store);
 
 function run() {
+  let state = store.getState();
+  localStore.set(state, ['cards', 'decks']);
   ReactDOM.render(
     <Provider store={store}>
       <Router history={history}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 import {addDeck, showAddDeck, hideAddDeck} from '../actions.js';
 
 
@@ -32,13 +33,16 @@ const Sidebar = React.createClass({
     return (
       <div className="sidebar">
         <h2>All Decks</h2>
-        <button onClick={ e => {this.props.showDeck()} }>
-          New Deck
-        </button>
         <ul>
           {
             props.decks.map((deck, index) => {
-              return <li key={index}> {deck.name} </li>
+              return (
+                <li key={index}>
+                  <Link to={`/deck/${deck.id}`}>
+                    {deck.name}
+                  </Link>
+                </li>
+              )
             })
           }
         </ul>
