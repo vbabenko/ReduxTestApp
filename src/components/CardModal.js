@@ -28,7 +28,7 @@ const CardModal = React.createClass({
         <label> Card Front: </label>
         <textarea ref='front' defaultValue={card.front}></textarea>
         <label> Card Back: </label>
-        <textarea ref='front' defaultValue={card.back}></textarea>
+        <textarea ref='back' defaultValue={card.back}></textarea>
         <p>
           <button onClick={this.saveCard}>Save</button>
           <Link to={`/deck/${card.deckId}`} className='btn'>Cancel</Link>

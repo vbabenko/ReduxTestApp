@@ -26607,7 +26607,7 @@ var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHi
 
 function run() {
   var state = store.getState();
-  localStore.set(state, ['cards', 'decks']);
+  localStore.set(state, ['decks', 'cards']);
   _reactDom2.default.render(_react2.default.createElement(
     _reactRedux.Provider,
     { store: store },
@@ -26737,7 +26737,7 @@ var CardModal = _react2.default.createClass({
         null,
         ' Card Back: '
       ),
-      _react2.default.createElement('textarea', { ref: 'front', defaultValue: card.back }),
+      _react2.default.createElement('textarea', { ref: 'back', defaultValue: card.back }),
       _react2.default.createElement(
         'p',
         null,
@@ -26780,9 +26780,10 @@ var _actions = require('../actions.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
+var mapStateToProps = function mapStateToProps(props, _ref) {
+  var deckId = _ref.params.deckId;
   return {
-    card: ownProps.params.deckId
+    card: { deckId: deckId }
   };
 };
 
@@ -27008,7 +27009,7 @@ var decks = exports.decks = function decks(state, action) {
 
 var cards = exports.cards = function cards(state, action) {
   switch (action.type) {
-    case 'ADD_CART':
+    case 'ADD_CARD':
       var newCard = Object.assign({}, action.data, {
         score: 1,
         id: +new Date()

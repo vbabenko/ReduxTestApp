@@ -10,7 +10,7 @@ export const decks = (state, action) => {
 
 export const cards = (state, action) => {
   switch (action.type) {
-    case 'ADD_CART':
+    case 'ADD_CARD':
       let newCard = Object.assign({}, action.data, {
         score: 1,
         id: +new Date()

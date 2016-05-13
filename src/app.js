@@ -17,7 +17,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 function run() {
   let state = store.getState();
-  localStore.set(state, ['cards', 'decks']);
+  localStore.set(state, ['decks', 'cards']);
   ReactDOM.render(
     <Provider store={store}>
       <Router history={history}>
