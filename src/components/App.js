@@ -4,16 +4,16 @@ import {connect} from 'react-redux';
 
 import Toolbar from './Toolbar.js';
 
-const mapStateToProps = (props, router) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    deckId: router.params.deckId
+    deckId: ownProps.params.deckId
   };
 };
 
 const App = ({ deckId, children }) => {
   return (
     <div className='app'>
-      <Toolbar />
+      <Toolbar deckId={deckId} />
       <Sidebar />
       {children}
     </div>

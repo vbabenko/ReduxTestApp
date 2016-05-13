@@ -10,6 +10,7 @@ reducers.routing = routerReducer;
 import * as localStore from './localStore.js';
 import App from './components/App.js';
 import VisibleCard from './components/VisibleCard.js';
+import NewCardModel from './components/NewCardModal.js';
 
 const store = createStore(combineReducers(reducers), localStore.get()); // state saved to local storage
 const history = syncHistoryWithStore(browserHistory, store);
@@ -21,7 +22,9 @@ function run() {
     <Provider store={store}>
       <Router history={history}>
         <Route path='/' component={App}>
-          <Route path='/deck/:deckId' component={VisibleCard} />
+          <Route path='/deck/:deckId' component={VisibleCard}>
+            <Route path='/deck/:deckId/new' component={NewCardModel} />
+          </Route>
         </Route>
       </Router>
     </Provider>,

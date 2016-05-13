@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Cards = () => {
+const Cards = ({children}) => {
   return (
     <div>
       Deck description here
+      {children}
     </div>
   )
 };
