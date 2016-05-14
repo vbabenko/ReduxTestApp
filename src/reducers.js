@@ -17,7 +17,13 @@ export const cards = (state, action) => {
       });
 
       return state.concat([newCard]);
-
+    case 'EDIT_CARD':
+      let editCard = action.data;
+      return state.map(card => (card.id !== editCard.id)
+              ? card
+              : Object.assign({}, card, editCard));
+    case 'DELETE_CARD':
+      return state.filter(c => c.id !== action.data);
     default:
       return state || [];
   }

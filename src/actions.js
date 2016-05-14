@@ -2,3 +2,5 @@ export const addDeck = name => ({type: 'ADD_DECK', data: name});
 export const addCard = card => ({type: 'ADD_CARD', data: card});
 export const showAddDeck = () => ({type: 'SHOW_ADD_DECK'});
 export const hideAddDeck = () => ({type: 'HIDE_ADD_DECK'});
+export const editCard = card => ({type: 'EDIT_CARD', data: card});
+export const deleteCard = cardId => ({type: 'DELETE_CARD', data: cardId});
