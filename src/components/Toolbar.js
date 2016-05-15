@@ -2,13 +2,14 @@ import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 
-import {showAddDeck} from '../actions.js';
+import {showAddDeck, filterCard} from '../actions.js';
 
 const mapDispatchToProps = dispatch => ({
-  showAddDeck: () => dispatch(showAddDeck())
+  showAddDeck: () => dispatch(showAddDeck()),
+  onFilter: query => dispatch(filterCard(query))
 });
 
-const Toolbar = ({deckId, showAddDeck}) => {
+const Toolbar = ({deckId, showAddDeck, onFilter}) => {
   let toolBarSettings = deckId
           ? (<div>
               <Link to={`/deck/${deckId}/new`} className='btn'>+ New card</Link>
@@ -21,6 +22,11 @@ const Toolbar = ({deckId, showAddDeck}) => {
         <button onClick={showAddDeck}>+ New deck</button>
       </div>
       {toolBarSettings}
+      <input type="search"
+             onChange={e => onFilter(e.target.value)}
+             className="search"
+             placeholder="Search Cards.."
+      />
     </div>
   )
 };

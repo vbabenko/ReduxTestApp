@@ -12,6 +12,7 @@ import App from './components/App.js';
 import VisibleCard from './components/VisibleCard.js';
 import NewCardModel from './components/NewCardModal.js';
 import EditCardModel from './components/EditCardModal.js';
+import StudyModal from './components/StudyModal.js';
 
 const store = createStore(combineReducers(reducers), localStore.get()); // state saved to local storage
 const history = syncHistoryWithStore(browserHistory, store);
@@ -26,6 +27,7 @@ function run() {
           <Route path='/deck/:deckId' component={VisibleCard}>
             <Route path='/deck/:deckId/new' component={NewCardModel} />
             <Route path='/deck/:deckId/edit/:cardId' component={EditCardModel} />
+            <Route path='/deck/:deckId/study' component={StudyModal} />
           </Route>
         </Route>
       </Router>

@@ -1,10 +1,15 @@
 import React from 'react';
+import fuzzySearch from 'fuzzysearch';
 import Card from './Card';
 import {connect} from 'react-redux';
 
-const mapStateToProps = ({cards}, {params : {deckId}}) => {
+const matches = (query, card) =>
+  fuzzySearch(query, card.front) ||
+  fuzzySearch(query, card.back);
+
+const mapStateToProps = ({cards, cardFilter}, {params : {deckId}}) => {
   return {
-    cards: cards.filter(c => c.deckId === deckId)
+    cards: cards.filter(c => c.deckId === deckId && matches(cardFilter, c))
   }
 };
 const Cards = ({cards, children}) => {
